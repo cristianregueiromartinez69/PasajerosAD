@@ -72,19 +72,18 @@ public class Crud {
         return null;
     }
 
-    public void insertValuesInReservasFeitas(List<Reserva> reservasList, List<String> nombre,List<Integer> sumaViaje){
+    public void insertValuesInReservasFeitas(int codr, String dni, String nombre, int sumaViaje){
         String consulta = "insert into reservasfeitas values(?,?,?,?)";
 
         try{
             conn = EstablecerConexion.conectar();
             pst = conn.prepareStatement(consulta);
 
-            for(int i = 0;i < reservasList.size(); i++){
-                pst.setInt(1, reservasList.get(i).getCodr());
-                pst.setString(2, reservasList.get(i).getDni());
-                pst.setString(3, nombre.get(i));
-                pst.setInt(4, sumaViaje.get(i));
-            }
+                pst.setInt(1, codr);
+                pst.setString(2, dni);
+                pst.setString(3, nombre);
+                pst.setInt(4, sumaViaje);
+
             if(pst.executeUpdate() > 0){
                 System.out.println("Inserccion hecha con exito");
             }
