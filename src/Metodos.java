@@ -12,4 +12,12 @@ public class Metodos {
         return listaViajes;
     }
 
+    public List<String> getNombresViajes(List<Reserva> reservaList, Crud crud){
+        List<String> listaNombresViajes = new ArrayList<>();
+        for(int i = 0; i < reservaList.size(); i++){
+            listaNombresViajes.add(crud.getNombreFromDB(reservaList.get(i).getDni()));
+        }
+        return listaNombresViajes;
+    }
+
 }
