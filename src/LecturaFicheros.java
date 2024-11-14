@@ -57,7 +57,7 @@ public class LecturaFicheros {
 
     private List<Reserva> createObjectsReserva(){
         Reserva reserva1 = new Reserva(1, "361a", 1, 2);
-        Reserva reserva2 = new Reserva(2, "361b", 3, 4);
+        Reserva reserva2 = new Reserva(2, "362b", 3, 4);
         Reserva reserva3 = new Reserva(3, "361a", 5, 6);
 
         List<Reserva> reservas = new ArrayList<>();
