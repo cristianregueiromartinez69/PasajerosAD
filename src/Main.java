@@ -11,6 +11,5 @@ public class Main {
         List<Reserva> reservaList = lef.readReservaFile(path);
         crud.auxUpdateReservas(reservaList);
 
-
     }
 }

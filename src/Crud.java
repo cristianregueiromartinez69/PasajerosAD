@@ -35,7 +35,6 @@ public class Crud {
 
     public int getPreciosIdaOrigen(int id){
         String consulta = "select prezo from voos where voo = ?";
-        int precio = 0;
         try{
             conn = EstablecerConexion.conectar();
             pst = conn.prepareStatement(consulta);
@@ -45,11 +44,31 @@ public class Crud {
             rs = pst.executeQuery();
 
             while(rs.next()){
-                precio = rs.getInt("prezo");
+                return rs.getInt("prezo");
             }
         } catch (SQLException e) {
             System.out.println("Ups, no se pudo obtener el precio");
         }
-        return precio;
+        return 0;
+    }
+
+    public String getNombreFromDB(String dni){
+        String consulta = "select nome from pasaxeiros where dni = ?";
+
+        try{
+            conn = EstablecerConexion.conectar();
+            pst = conn.prepareStatement(consulta);
+
+            pst.setString(1, dni);
+
+            rs = pst.executeQuery();
+
+            while(rs.next()){
+                return rs.getString("nome");
+            }
+        } catch (SQLException e) {
+            System.out.println("Ups, no se pudo obtener el nombre");
+        }
+        return null;
     }
 }
