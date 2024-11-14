@@ -71,4 +71,25 @@ public class Crud {
         }
         return null;
     }
+
+    public void insertValuesInReservasFeitas(List<Reserva> reservasList, List<String> nombre,List<Integer> sumaViaje){
+        String consulta = "insert into reservasfeitas values(?,?,?,?)";
+
+        try{
+            conn = EstablecerConexion.conectar();
+            pst = conn.prepareStatement(consulta);
+
+            for(int i = 0;i < reservasList.size(); i++){
+                pst.setInt(1, reservasList.get(i).getCodr());
+                pst.setString(2, reservasList.get(i).getDni());
+                pst.setString(3, nombre.get(i));
+                pst.setInt(4, sumaViaje.get(i));
+            }
+            if(pst.executeUpdate() > 0){
+                System.out.println("Inserccion hecha con exito");
+            }
+        } catch (SQLException e) {
+            System.out.println("Ups, hubo un error a la hora de insertar valores");
+        }
+    }
 }
