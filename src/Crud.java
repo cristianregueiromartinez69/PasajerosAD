@@ -32,4 +32,24 @@ public class Crud {
             updateReservasPasajeros(reserva.getDni());
         }
     }
+
+    public int getPreciosIdaOrigen(int id){
+        String consulta = "select prezo from voos where voo = ?";
+        int precio = 0;
+        try{
+            conn = EstablecerConexion.conectar();
+            pst = conn.prepareStatement(consulta);
+
+            pst.setInt(1, id);
+
+            rs = pst.executeQuery();
+
+            while(rs.next()){
+                precio = rs.getInt("prezo");
+            }
+        } catch (SQLException e) {
+            System.out.println("Ups, no se pudo obtener el precio");
+        }
+        return precio;
+    }
 }

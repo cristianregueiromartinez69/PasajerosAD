@@ -5,10 +5,12 @@ public class Main {
 
         LecturaFicheros lef = new LecturaFicheros();
         Crud crud = new Crud();
-        String path = "/home/accesodatos/Escritorio/compartidaAD/ejemploExamenAD/reservas";
+        String path = "reservas";
 
         lef.writeFileReserva(path);
         List<Reserva> reservaList = lef.readReservaFile(path);
         crud.auxUpdateReservas(reservaList);
+
+
     }
 }
